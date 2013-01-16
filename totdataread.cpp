@@ -9,9 +9,18 @@
 #include <root/TSystem.h>
 //#include <root/TTree.h>
 #endif
-//#pragma link C++ class vector<ClusterType>;
+
 #include <root/TROOT.h>
 
+#ifdef __CINT__
+#pragma link C++ class std::pair<unsigned char,unsigned char>+;
+#pragma link C++ class std::pair< std::pair<unsigned char,unsigned char> , unsigned short int>+;
+#pragma link C++ class std::vector<std::pair< std::pair<unsigned char,unsigned char> , unsigned short int> >+;
+#pragma link C++ class XYpos+;
+#pragma link C++ class PixValue+;
+#pragma link C++ class ClusterType+;
+#pragma link C++ class vector<ClusterType>+;
+#endif
 
 TOTdataread::TOTdataread()
 {
@@ -19,8 +28,8 @@ TOTdataread::TOTdataread()
 
 void TOTdataread::ReadDataCreateRootTree(string nameTOTfile)
 {
-    gROOT->ProcessLine(".L ./tmp.cxx+");
-    gSystem->Load("./tmp_cxx.so");
+    //gROOT->ProcessLine(".L ./tmp.cxx+");
+    //gSystem->Load("./tmp_cxx.so");
     string S;
     cout << S << endl;
 
